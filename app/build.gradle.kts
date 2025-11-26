@@ -8,6 +8,9 @@ android {
     namespace = "com.example.locationinfo"
     compileSdk = 36
 
+    val apiKey: String = com.android.build.gradle.internal.cxx.configure.gradleLocalProperties(rootDir)
+        .getProperty("MAPS_API_KEY")
+
     defaultConfig {
         applicationId = "com.example.locationinfo"
         minSdk = 24
@@ -16,6 +19,8 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        manifestPlaceholders["MAPS_API_KEY"] = apiKey
     }
 
     buildTypes {
